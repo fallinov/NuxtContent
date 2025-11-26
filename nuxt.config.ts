@@ -3,5 +3,11 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   modules: ['@nuxt/content', '@nuxt/ui', 'nuxt-studio'],
-  css: ['~/assets/css/main.css']
+  css: ['~/assets/css/main.css'],
+  content: {
+    database: {
+      type: 'postgres',
+      url: process.env.POSTGRES_URL || process.env.DATABASE_URL || ''
+    }
+  }
 })
