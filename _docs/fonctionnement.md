@@ -39,6 +39,15 @@ Nuxt Content v3 change de paradigme par rapport à la v2 en utilisant une approc
 *   **Stockage** : Les données parsées sont stockées dans votre base Supabase.
 *   **Flux** : Lors du build ou du démarrage, Nuxt Content se connecte à Supabase via `POSTGRES_URL` et synchronise le contenu.
 
+### Gestion des Tâches (Supabase Realtime)
+Pour la page `/taches`, nous utilisons une approche hybride :
+1.  **Chargement Initial (SSR)** : Les tâches sont chargées côté serveur via `useAsyncData` pour le SEO et la performance.
+2.  **Synchronisation (Client)** : Une fois hydraté, le client s'abonne aux changements via **Supabase Realtime**.
+3.  **Réactivité** :
+    *   Une copie locale (`localTasks`) est utilisée pour l'affichage.
+    *   Les événements `INSERT`, `UPDATE`, `DELETE` mettent à jour cette liste instantanément.
+    *   Les actions utilisateur (cocher une case) mettent à jour l'état local immédiatement (Optimistic UI) puis synchronisent avec la base.
+
 ## 3. Rendu (SSR vs CSR)
 
 L'application utilise le **Rendu Universel (Universal Rendering)**.
