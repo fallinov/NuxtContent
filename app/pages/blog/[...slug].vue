@@ -3,6 +3,12 @@ const route = useRoute()
 const { data: post } = await useAsyncData(route.path, () => {
   return queryCollection('blog').path(route.path).first()
 })
+
+useSeoMeta({
+  title: post.value?.title,
+  description: post.value?.description,
+  keywords: post.value?.keywords?.join(', ')
+})
 </script>
 
 <template>
