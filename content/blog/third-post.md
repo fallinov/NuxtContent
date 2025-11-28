@@ -8,3 +8,8 @@ keywords: ["third", "post", "news"]
 # Third Post
 
 And the third post. Even more content.
+
+> Merci julien pour le café !
+
+---
+Hoplà
